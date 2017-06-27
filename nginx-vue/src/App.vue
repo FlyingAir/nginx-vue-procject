@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-row>
-      <el-col :span="8"><div class="grid-content bg-purple" >登录</div></el-col>
+      <el-col :span="8"><div class="grid-content bg-purple" @click='login'>登录</div></el-col>
       <el-col :span="8"><div class="grid-content bg-purple-light" @click="regist">注册</div></el-col>
       <el-col :span="8"><div class="grid-content bg-purple-dark" @click="details">详情</div></el-col>
     </el-row>
@@ -18,6 +18,10 @@ export default {
   methods:{
     login(){
         router.push({ name: 'login' });
+    },regist(){
+        router.push({ name: 'regist' });
+    },details(){
+        router.push({ name: 'details' });
     },
   }
 }
@@ -52,5 +56,3 @@ export default {
     background-color: #f9fafc;
   }
 </style>
-
-
