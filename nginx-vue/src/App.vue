@@ -1,11 +1,27 @@
 <template>
   <div id="app">
-    <el-row>
-      <el-col :span="8"><div class="grid-content bg-purple" @click='login'>登录</div></el-col>
-      <el-col :span="8"><div class="grid-content bg-purple-light" @click="regist">注册</div></el-col>
-      <el-col :span="8"><div class="grid-content bg-purple-dark" @click="details">详情</div></el-col>
-    </el-row>
-    <router-view></router-view>
+    <mt-tabbar v-model="selected">
+      <mt-tab-item  id="tab1" >
+        <i slot="icon" class="main-icon" @click="toMain"></i>
+      </mt-tab-item>
+      <mt-tab-item id="tab2" >
+        <i slot="icon" class="music-icon" @click="toMusic"></i> 
+      </mt-tab-item>
+      <div class="playing-model" id="playing-model">
+        <i class="playing-model-icon">
+          <img class="loading-model" src="../static/loading.gif" height="25" width="32"></img>
+        </i> 
+      </div>
+      <mt-tab-item id="tab3" >
+       <i slot="icon" class="center-icon" @click="toCenter"></i>
+      </mt-tab-item>
+      <mt-tab-item id="tab4" >
+        <i slot="icon" class="search-icon" @click="toSearch"></i>
+      </mt-tab-item>
+    </mt-tabbar>
+    <mt-tab-container v-model="selected">
+      <router-view></router-view>
+    </mt-tab-container>
   </div>
 </template>
 
@@ -13,46 +29,27 @@
 import router from "./router"
 export default {
   data: function() {
-    return { visible: false }
+    return { 
+      visible: false,
+      selected: 1,
+       }
   },
   methods:{
-    login(){
-        router.push({ name: 'login' });
-    },regist(){
-        router.push({ name: 'regist' });
-    },details(){
-        router.push({ name: 'details' });
+    toMain(){
+      router.push({path:"/main",name:"main"});
     },
-  }
+    toMusic(){
+      router.push({path:"/music",name:"music"});
+    },
+    toSearch(){
+      router.push({path:"/search",name:"search"});
+    },
+    toCenter(){
+      router.push({path:"/center",name:"center"});
+    }
+  },
 }
 </script>
 <style lang="scss">
- .el-row {
-    margin-bottom: 20px;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-  .el-col {
-    border-radius: 4px;
-  }
-  .bg-purple-dark {
-    background: #99a9bf;
-  }
-  .bg-purple {
-    background: #d3dce6;
-  }
-  .bg-purple-light {
-    background: #e5e9f2;
-  }
-  .grid-content {
-    text-align: center;
-    line-height: 36px;
-    border-radius: 4px;
-    min-height: 36px;
-  }
-  .row-bg {
-    padding: 10px 0;
-    background-color: #f9fafc;
-  }
+  @import "../static/css/app"
 </style>

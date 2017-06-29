@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import login from '../pages/Login'
-import regist from '../pages/Regist'
-import details from '../pages/details'
+import center from '../pages/Center'
+import music from '../pages/Music'
+import main from '../pages/Main'
+import search from '../pages/Search'
 
 
 Vue.use(Router)
@@ -10,19 +11,24 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/login',
-      name: 'login',
-      component: login
+      path: '/center',
+      name: 'center',
+      component: center
     },
     {
-      path: '/regist',
-      name: 'regist',
-      component: regist
+      path: '/music',
+      name: 'music',
+      component: music
     },
     {
-      path: '/details',
-      name: 'details',
-      component: details
+      path: '/main',
+      name: 'main',
+      component: main
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: search
     },
   ]
 })

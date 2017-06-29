@@ -1,5 +1,5 @@
 <template>
-   <div class="details">
+   <div class="regist">
       <input type="text" v-model="message">
    </div>
 </template>
@@ -10,7 +10,7 @@ export default {
   data: function() {
     return {
       visible: false,
-      message: "details"
+      message: "注册"
     }
   },
 }
