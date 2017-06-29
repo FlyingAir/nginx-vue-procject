@@ -1,16 +1,16 @@
 <template>
   <div id="app">
     <mt-tabbar v-model="selected">
-      <mt-tab-item  id="tab1" >
+      <mt-tab-item  id="tab1">
         <i slot="icon" class="main-icon" @click="toMain"></i>
       </mt-tab-item>
       <mt-tab-item id="tab2" >
-        <i slot="icon" class="music-icon" @click="toMusic"></i> 
+        <i slot="icon" class="music-icon" @click="toMusic"></i>
       </mt-tab-item>
       <div class="playing-model" id="playing-model">
         <i class="playing-model-icon">
           <img class="loading-model" src="../static/loading.gif" height="25" width="32"></img>
-        </i> 
+        </i>
       </div>
       <mt-tab-item id="tab3" >
        <i slot="icon" class="center-icon" @click="toCenter"></i>
@@ -29,23 +29,23 @@
 import router from "./router"
 export default {
   data: function() {
-    return { 
+    return {
       visible: false,
       selected: 1,
        }
   },
   methods:{
     toMain(){
-      router.push({path:"/main",name:"main"});
+      router.push({name:"main"});
     },
     toMusic(){
-      router.push({path:"/music",name:"music"});
+      router.push({name:"music"});
     },
     toSearch(){
-      router.push({path:"/search",name:"search"});
+      router.push({name:"search"});
     },
     toCenter(){
-      router.push({path:"/center",name:"center"});
+      router.push({name:"center"});
     }
   },
 }
