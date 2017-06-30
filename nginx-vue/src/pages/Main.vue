@@ -1,105 +1,82 @@
 <template>
   <div class="main-page">
-    <div class="search-bar">
-      <div class="search-content">
-        <i class="search-icon"></i>
-        <input type="text" name="" value="" placeholder="Jay" readonly>
-      </div>
+    <search-bar></search-bar>
+    <banner-swipe></banner-swipe>
+    <div class="main-nav">
+      <ul>
+        <li><div><i class="main-FM"></i></div><span>私人FM</span></li>
+        <li><div><i class="main-recom"></i></div><span>歌曲推荐</span></li>
+        <li><div><i class="main-ranking"></i></div><span>热歌榜</span></li>
+      </ul>
     </div>
-
-
-    <mt-swipe :auto="4000" >
-      <mt-swipe-item v-for="(bannerItem,index) in bannerList.banners">
-        <img class="banner-img" v-bind:src="bannerItem.pic" alt='' width="100%" :index="index" ref="pic"/>
-      </mt-swipe-item>
-    </mt-swipe>
+    <recom-source></recom-source>
+    <nav-bar></nav-bar>
   </div>
+  
 </template>
 
 <script>
+import navBar from "../components/navBar.vue"
+import bannerSwipe from "../components/bannerSwipe.vue"
+import searchBar from "../components/searchBar.vue"
+import recomSource from "../components/recomSource.vue"
 import router from "../router"
 export default {
-  data: function() {
-    return {
-      bannerList: ''
-    }
-  },
-  created: function() {
-    this.getBanner();
-  },
-  mounted:function(){
-
- },
-  methods: {
-    getBanner: function() {
-      this.$http.get("/api/banner").then(response => {
-        this.bannerList = response.data;
-        console.log(this.bannerList);
-      }, response => {
-        console.log("error");
-      })
-    },
+ components:{
+      "navBar":navBar,
+      "bannerSwipe":bannerSwipe,
+      "searchBar":searchBar,
+      "recomSource":recomSource
   }
 }
 </script>
 <style lang="scss">
-.main-page{
-  width: 100%;
-  .search-bar{
-    height:30px;
-    background-color: #ffdf7d;
-    padding-top: 6px;
-    .search-content{
-      width: 80%;
-      margin:0px auto;
-      height:24px;
-      border-radius: 20px 20px;
-      overflow: hidden;
-      position: relative;
-      .search-icon{
-        width:16px;
-        height:16px;
-        top:5px;
-        left:7px;
-        background-color: red;
-        position: absolute;
-        background: url("/static/sp.png")  no-repeat;
-        background-size:400px 300px;
-        background-position:(-356*0.5)+px (-172*0.5)+px;
-      }
-      input{
-        color:#eee;
-        font-size:16px;
-        height:24px;
-        padding-left:40px;
-        width: 100%;
-        outline: none;
-        border:none;
+@import "./static/css/index";
+  .main-page{
+    width: 100%;
+    height:100%;
+    background-color: $bgc;
+   
+  }
+  .main-nav{
+    ul{
+      padding:10px 0;
+       display: flex;
+      li{
+          flex:1;
+          text-align: center;
+          div{
+              margin:0 auto;
+              width:50px;
+              height:50px;
+              border-radius:50%;
+              border:1px solid #aaa;
+              line-height: 57px;
+              margin-bottom:5px;
+            i{
+              width:24px;
+              height:24px;
+              display:inline-block;
+              margin-left:-2px;
+              background:url('../../static/sp2.png');
+            }
+
+            .main-FM{
+              background-position:(-524*0.75)+px (-340*0.75)+px;
+            }
+            .main-recom{
+              background-position:(-412*0.75)+px (-284*0.75)+px;
+            }
+            .main-ranking{
+              background-position:(-132*0.75)+px (-116*0.75)+px;
+            }
+          }  
+           span{
+              color:$fontColor;
+              font-family:"microsoft yahei";
+              font-size:12px;
+            }       
       }
     }
   }
-}
-.mint-tab-container {
-    overflow: visible;
-    width: 100vw;
-    height: (100*420/1080)+vw;
-}
-.mint-tab-container-wrap {
-    width: 100%;
-    height: 100%;
-}
-.mint-swipe {
-    width: 100%;
-    height: 100%;
-}
-.banner-img{
-  display: block;
-}
-.mint-swipe-items-wrap > div{
-  width: 100%;
-  height: 100%;
-}
-.mint-swipe-items-wrap{
-  width: 100%;
-}
 </style>

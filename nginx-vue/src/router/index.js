@@ -3,13 +3,19 @@ import Router from 'vue-router'
 import center from '../pages/Center'
 import music from '../pages/Music'
 import main from '../pages/Main'
-import search from '../pages/Search'
+import love from '../pages/Love'
 
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'main',
+      component: main
+
+    },
     {
       path: '/center',
       name: 'center',
@@ -21,14 +27,9 @@ export default new Router({
       component: music
     },
     {
-      path: '/main',
-      name: 'main',
-      component: main
-    },
-    {
-      path: '/search',
-      name: 'search',
-      component: search
+      path: '/love',
+      name: 'love',
+      component: love
     },
   ]
 })

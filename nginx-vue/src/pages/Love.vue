@@ -1,5 +1,5 @@
 <template>
-   <div class="regist">
+   <div class="login">
       <nav-bar></nav-bar>
    </div>
 </template>
@@ -9,9 +9,9 @@ import navBar from "../components/navBar.vue"
 import router from "../router"
 export default {
   data: function() {
-    return {
+    return { 
       visible: false,
-      message: "注册"
+      message: "请输入用户名"
     }
   },
    components:{
@@ -22,3 +22,5 @@ export default {
 <style lang="scss">
 
 </style>
+
+

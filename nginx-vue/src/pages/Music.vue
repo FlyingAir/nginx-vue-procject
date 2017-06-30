@@ -1,10 +1,11 @@
 <template>
    <div class="login">
-      <input type="text" v-model="message">
+      <nav-bar></nav-bar>
    </div>
 </template>
 
 <script>
+import navBar from "../components/navBar.vue"
 import router from "../router"
 export default {
   data: function() {
@@ -12,7 +13,10 @@ export default {
       visible: false,
       message: "请输入用户名"
     }
-  },
+  }, 
+  components:{
+      "navBar":navBar,
+  }
 }
 </script>
 <style lang="scss">
