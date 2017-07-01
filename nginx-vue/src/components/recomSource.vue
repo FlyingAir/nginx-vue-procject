@@ -3,18 +3,20 @@
     	<div>
     	<header>推荐歌单 <i>></i> </header>
     	<ul class="songSheet">
-    		<li v-for="(sourceItem,index) in sourceList.result"> 
-    			<img v-bind:src="sourceItem.picUrl" alt="" width="95%">
-    			<!-- <div class="bg-company" v-lazy:background-image="imgIcon"></div>   -->
+    		<li v-for="(sourceItem,index) in sourceList.result">
+           <router-link :to="{name: 'playListDetail',params: { id: sourceItem.id, name: sourceItem.name, coverImg: sourceItem.coverImgUrl, creator: sourceItem.creator, count: sourceItem.playCount, desc: sourceItem.description }}">
+    			<img  alt="" width="95%" v-lazy="sourceItem.picUrl">
+    			<!-- <div class="bg-company" v-lazy:background-image="imgIcon"></div> -->
     			<span>{{sourceItem.name}}</span>
+          </router-link>
     		</li>
     	</ul>
     	</div>
     	<div>
     	<header>独家放送 <i>></i> </header>
     	<ul class="exclusiveness">
-    		<li v-for="(exclusivenessItem,index) in exclusivenessList.result"> 
-    			<img v-bind:src="exclusivenessItem.picUrl" alt="" width="95%">
+    		<li v-for="(exclusivenessItem,index) in exclusivenessList.result">
+    			<img v-lazy="exclusivenessItem.picUrl" alt="" width="95%">
     			<!-- <div class="bg-company" v-lazy:background-image="imgIcon"></div>   -->
     			<span>{{exclusivenessItem.name}}</span>
     		</li>
@@ -23,8 +25,8 @@
     	<div>
     	<header>推荐MV<i>></i> </header>
     	<ul class="recomMV">
-    		<li v-for="(recomMVItem,index) in recomMVList.result"> 
-    			<img v-bind:src="recomMVItem.picUrl" alt="" width="95%">
+    		<li v-for="(recomMVItem,index) in recomMVList.result">
+    			<img v-lazy="recomMVItem.picUrl" alt="" width="95%">
     			<!-- <div class="bg-company" v-lazy:background-image="imgIcon"></div>   -->
     			<span class="songTitle">{{recomMVItem.name}}</span>
     			<span class='artistName'>{{recomMVItem.artistName}}</span>
@@ -34,8 +36,8 @@
     	<div>
     	<header>推荐电台<i>></i> </header>
     	<ul class="recomRadio">
-    		<li v-for="(recomRadioItem,index) in recomRadioList.result"> 
-    			<img v-bind:src="recomRadioItem.picUrl" alt="" width="95%">
+    		<li v-for="(recomRadioItem,index) in recomRadioList.result">
+    			<img v-lazy="recomRadioItem.picUrl" alt="" width="95%">
     			<!-- <div class="bg-company" v-lazy:background-image="imgIcon"></div>   -->
     			<span>{{recomRadioItem.name}}</span>
     		</li>
@@ -44,8 +46,8 @@
     	<div>
     	<header>推荐节目<i>></i> </header>
     	<ul class="recomPro">
-    		<li v-for="(recomProItem,index) in recomProList.programs"> 
-    			<img v-bind:src="recomProItem.coverUrl" alt="" width="95%">
+    		<li v-for="(recomProItem,index) in recomProList.programs">
+    			<img v-lazy="recomProItem.coverUrl" alt="" width="95%">
     			<!-- <div class="bg-company" v-lazy:background-image="imgIcon"></div>   -->
     			<span>{{recomProItem.name}}</span>
     		</li>
@@ -56,16 +58,16 @@
 </template>
 
 <script>
-    export default{
-    	data: function() {
-    		return { 
-      			sourceList:"", 
+  export default{
+    data: function() {
+    		return {
+      			sourceList:"",
       			exclusivenessList:"",
       			recomMVList:"",
       			recomRadioList:"",
-      			recomProList:""
+      			recomProList:"",
     		}
-		}, 
+		},
 		created:function(){
 			this.getRecoSource();
 			this.getExclusiveness();
@@ -109,7 +111,7 @@
 					if(response.data.code="200"){
 						this.recomRadioList = response.data;
 	        			console.log(this.recomRadioList);
-					}        	
+					}
 	      	}, response => {
 	        	console.log("error");
 	      		})
@@ -119,13 +121,13 @@
 					if(response.data.code="200"){
 						this.recomProList = response.data;
 	        			console.log(this.recomProList);
-					}        	
+					}
 	      	}, response => {
 	        	console.log("error");
 	      		})
 			}
 		}
-		
+
     }
 </script>
 
@@ -144,16 +146,17 @@
 			font-size:16px;
 			font-family:"microsoft yahei";
 			border-left:2px solid $mainColor;
-			i{	
-				font-family:"宋体";
+			i{
 				font-weight: 600;
+        font-size:18px;
+        font-family: 'Georgia'
 			}
     	}
     	ul{
     		display:flex;
     		flex-wrap:wrap;
     		width:100%;
-    		li{	
+    		li{
     			margin:5px 0px;
 				width:33%;
 				img{
@@ -193,6 +196,12 @@
     			width:50%;
     		}
     	}
-    	
+
+      img[lazy=loading]{
+
+      }
+      img[lazy=loaded]{
+
+      }
     }
 </style>

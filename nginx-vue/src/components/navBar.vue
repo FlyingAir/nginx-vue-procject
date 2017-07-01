@@ -45,7 +45,7 @@ export default {
     },
     onPanStart(el){
       if(el.type='panstart'){
-          
+
       }
     },
     onPanEnd(el){
@@ -63,5 +63,65 @@ export default {
 }
 </script>
 <style lang="scss">
-  @import "./static/css/navBar"
+.mint-tabbar {
+    background: #eee;
+    height: 50px;
+    border-top: 1px solid #ddd;
+    position:fixed;
+    #playing-model>div{
+        height:70px;
+    }
+    .mint-tab-item-icon {
+        margin-top: 6px;
+    }
+    .mint-tab-item.is-selected {
+        background:none;
+    }
+    .mint-tab-item.is-selected i{
+      background-image: url("/static/sp2.png");
+    }
+    .main-icon {
+        background: url("/static/sp.png") center center no-repeat;
+        background-position: (-636*0.75)+px (-228*0.75)+px;
+    }
+    .music-icon {
+        background: url("/static/sp.png") center center no-repeat;
+        background-position: (-468*0.75)+px (-340*0.75)+px;
+    }
+    .center-icon {
+        background: url("/static/sp.png") center center no-repeat;
+        background-position: (-468*0.75)+px (-284*0.75)+px;
+    }
+    .love-icon {
+        background: url("/static/sp.png") center center no-repeat;
+        background-position: (-132*0.75)+px (-452*0.75)+px;
+    }
+    .playing-model {
+        position: relative;
+        z-index: 9999;
+        top: -20px;
+        height: 70px;
+        width: 70px;
+        margin:0;
+        padding:0 30px;
+        overflow:hidden;
+        .playing-model-icon {
+            transition:all 0.2s ;
+            position: absolute;
+            top: 0;
+            margin-top: 16px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 1px 0px #ddd;
+            border: 2px solid #eee;
+            top: -8px;
+            width: 66px;
+            height: 66px;
+            background-color: #666;
+            .loading-model{
+              margin-top: 19px;
+            }
+        }
+    }
+}
+
 </style>

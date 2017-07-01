@@ -36,7 +36,7 @@
         background-position:(-356*0.5)+px (-172*0.5)+px;
       }
       input{
-        font-size:16px;
+        font-size:14px;
         height:24px;
         padding-left:40px;
         width: 100%;

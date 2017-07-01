@@ -15,12 +15,13 @@ Vue.config.productionTip = false
 Vue.use(VueTouch,{name: 'v-touch'})
 /* eslint-disable no-new */
 Vue.use(MintUI,VueAxios, axios)
-Vue.use(VueLazyload, {  
-    preLoad: 1.3,  
-    error: '../static/error.jpg',  
-    loading: '../static/picLoading.gif',  
-    attempt: 1  
-});  
+Vue.use(VueLazyload, {
+    preLoad: 1.3,
+    error: '../static/error.jpg',
+    loading: '../static/default_cover.png',
+    attempt: 1 ,
+    listenEvents: [ 'scroll' ]
+});
 Vue.prototype.$http = axios
 
 new Vue({

@@ -12,7 +12,7 @@
     <recom-source></recom-source>
     <nav-bar></nav-bar>
   </div>
-  
+
 </template>
 
 <script>
@@ -36,7 +36,7 @@ export default {
     width: 100%;
     height:100%;
     background-color: $bgc;
-   
+
   }
   .main-nav{
     ul{
@@ -51,11 +51,11 @@ export default {
               height:50px;
               border-radius:50%;
               border:1px solid #aaa;
-              line-height: 57px;
+              line-height: 60px;
               margin-bottom:5px;
             i{
-              width:24px;
-              height:24px;
+              width:25px;
+              height:25px;
               display:inline-block;
               margin-left:-2px;
               background:url('../../static/sp2.png');
@@ -70,12 +70,12 @@ export default {
             .main-ranking{
               background-position:(-132*0.75)+px (-116*0.75)+px;
             }
-          }  
+          }
            span{
               color:$fontColor;
               font-family:"microsoft yahei";
               font-size:12px;
-            }       
+            }
       }
     }
   }
