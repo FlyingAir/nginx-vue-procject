@@ -74,12 +74,7 @@ export default {
     .mint-tab-item-icon {
         margin-top: 6px;
     }
-    .mint-tab-item.is-selected {
-        background:none;
-    }
-    .mint-tab-item.is-selected i{
-      background-image: url("/static/sp2.png");
-    }
+
     .main-icon {
         background: url("/static/sp.png") center center no-repeat;
         background-position: (-636*0.75)+px (-228*0.75)+px;

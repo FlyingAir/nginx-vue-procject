@@ -30,13 +30,14 @@ export default {
   },
   methods: {
     getPlayList() {
-      this.$http.get("/api/playlist/detail?id=" + this.$route.params.id).then(response => {
-        if (response.code = "200") {
-          this.playList = response.data.playList;
-          this.privileges=response.privileges;
-          console.log(this.playList);
-          console.log(this.privileges);
-        }
+      this.$http.get("/playlist/detail?id=" + this.$route.params.id).then(response => {
+        console.log(response)
+        // if (response.code = "200") {
+        //   this.playList = response.data.playList;
+        //   this.privileges=response.privileges;
+        //   console.log(this.playList);
+        //   console.log(this.privileges);
+        // }
       }, response => {
         console.log("error");
       })

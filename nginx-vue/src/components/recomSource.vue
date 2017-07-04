@@ -4,7 +4,7 @@
     	<header>推荐歌单 <i>></i> </header>
     	<ul class="songSheet">
     		<li v-for="(sourceItem,index) in sourceList.result">
-           <router-link :to="{name: 'playListDetail',params: { id: sourceItem.id, name: sourceItem.name, coverImg: sourceItem.coverImgUrl, creator: sourceItem.creator, count: sourceItem.playCount, desc: sourceItem.description }}">
+           <router-link :to="{name: 'playListDetail',params:{ id: sourceItem.id, name: sourceItem.name, coverImg: sourceItem.coverImgUrl, creator: sourceItem.creator, count: sourceItem.playCount, desc: sourceItem.description }}">
     			<img  alt="" width="95%" v-lazy="sourceItem.picUrl">
     			<!-- <div class="bg-company" v-lazy:background-image="imgIcon"></div> -->
     			<span>{{sourceItem.name}}</span>
@@ -77,50 +77,50 @@
 		},
 		methods:{
 			getRecoSource(){
-				this.$http.get("/api/personalized").then(response => {
+				this.$http.get("/personalized").then(response => {
 					if(response.data.code="200"){
 	        	this.sourceList = response.data;
-	        	console.log(this.sourceList);
+	        	// console.log(this.sourceList);
 	        }
 	      	}, response => {
 	        	console.log("error");
 	      		})
 			},
 			getExclusiveness(){
-				this.$http.get("/api/personalized/privatecontent").then(response => {
+				this.$http.get("/personalized/privatecontent").then(response => {
 					if(response.data.code="200"){
 	        	this.exclusivenessList = response.data;
-	        	console.log(this.exclusivenessList);
+	        	// console.log(this.exclusivenessList);
 	        }
 	      	}, response => {
 	        	console.log("error");
 	      		})
 			},
 			getRecomMV(){
-				this.$http.get("/api/personalized/mv").then(response => {
+				this.$http.get("/personalized/mv").then(response => {
 					if(response.data.code="200"){
 	        			this.recomMVList = response.data;
-	        			console.log(this.recomMVList);
+	        			// console.log(this.recomMVList);
 	        		}
 	      	}, response => {
 	        	console.log("error");
 	      		})
 			},
 			getRecomRadio(){
-				this.$http.get("/api/personalized/djprogram").then(response => {
+				this.$http.get("/personalized/djprogram").then(response => {
 					if(response.data.code="200"){
 						this.recomRadioList = response.data;
-	        			console.log(this.recomRadioList);
+	        			// console.log(this.recomRadioList);
 					}
 	      	}, response => {
 	        	console.log("error");
 	      		})
 			},
 			getRecomPro(){
-				this.$http.get("/api/program/recommend").then(response => {
+				this.$http.get("/program/recommend").then(response => {
 					if(response.data.code="200"){
 						this.recomProList = response.data;
-	        			console.log(this.recomProList);
+	        			// console.log(this.recomProList);
 					}
 	      	}, response => {
 	        	console.log("error");
@@ -159,6 +159,9 @@
     		li{
     			margin:5px 0px;
 				width:33%;
+                a{
+                    width:100%;
+                }
 				img{
 					display:block;
 					margin:0 auto;
@@ -198,10 +201,10 @@
     	}
 
       img[lazy=loading]{
-
+        width: 95%;
       }
       img[lazy=loaded]{
-
+        width: 95%;
       }
     }
 </style>

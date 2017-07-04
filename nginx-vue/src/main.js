@@ -15,6 +15,7 @@ Vue.config.productionTip = false
 Vue.use(VueTouch,{name: 'v-touch'})
 /* eslint-disable no-new */
 Vue.use(MintUI,VueAxios, axios)
+
 Vue.use(VueLazyload, {
     preLoad: 1.3,
     error: '../static/error.jpg',
@@ -23,7 +24,7 @@ Vue.use(VueLazyload, {
     listenEvents: [ 'scroll' ]
 });
 Vue.prototype.$http = axios
-
+axios.defaults.baseURL = "http://74.121.151.232:3000/";
 new Vue({
   el: '#app',
   router,

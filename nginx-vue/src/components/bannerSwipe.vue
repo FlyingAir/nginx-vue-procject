@@ -17,9 +17,9 @@
 	 },
 	 methods: {
 	    getBanner: function() {
-	      this.$http.get("/api/banner").then(response => {
+	      this.$http.get("/banner").then(response => {
 	        this.bannerList = response.data;
-	        console.log(this.bannerList);
+	        // console.log(this.bannerList);
 	      }, response => {
 	        console.log("error");
 	      })
