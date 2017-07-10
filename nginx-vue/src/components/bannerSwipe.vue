@@ -30,7 +30,7 @@
 <style lang="scss">
 .mint-swipe {
    width: 100vw;
-   height: (100*420/1080)+vw;
+   height: (100*420/1080)+vw
 }
 .banner-img{
   display: block;

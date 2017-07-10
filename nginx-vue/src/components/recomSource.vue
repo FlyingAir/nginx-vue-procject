@@ -156,11 +156,14 @@
     		display:flex;
     		flex-wrap:wrap;
     		width:100%;
+            height:87.2vw;
     		li{
     			margin:5px 0px;
 				width:33%;
+                
                 a{
                     width:100%;
+                   
                 }
 				img{
 					display:block;

@@ -33,7 +33,7 @@ export default new Router({
       component: love
     },
     {
-      path: '/playListDetail:id',
+      path: '/playListDetail/:id',
       name: 'playListDetail',
       component: playListDetail
     },

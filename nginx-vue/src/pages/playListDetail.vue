@@ -7,10 +7,21 @@
           <mt-button icon="back"></mt-button>
         </router-link>
       </mt-header>
-      <div class="list-cover">
-        <img v-lazy="" alt="">
-        <span class="list-name"></span>
-        <span class="list-owner"><i class="owner-pic"></i></span>
+      <div class="playlist-info">
+      <div class="info-wrapper">
+      <div class="info-gallery"><span></span> <img v-lazy="playList.coverImgUrl" alt=""></div>
+      <div class="info-title">
+      <p class="titile">{{playList.name}}</p>
+      <p class="author">
+        <div class="mu-avatar">
+          <div class="mu-avatar-inner">
+            <img v-lazy="playList.creator.avatarUrl" alt="">
+          </div>
+          <span >{{playList.creator.nickname}}</span>
+        </div>
+      </p>
+      </div> 
+      </div>
       </div>
     </div>
   </div>
@@ -31,14 +42,10 @@ export default {
   methods: {
     getPlayList() {
       this.$http.get("/playlist/detail?id=" + this.$route.params.id).then(response => {
-        console.log(response)
-        // if (response.code = "200") {
-        //   this.playList = response.data.playList;
-        //   this.privileges=response.privileges;
-        //   console.log(this.playList);
-        //   console.log(this.privileges);
-        // }
-      }, response => {
+          this.playList = response.data.playlist;
+          this.privileges=response.data.privileges;
+          console.log(this.playList);
+      },response => {
         console.log("error");
       })
     },
@@ -57,30 +64,62 @@ export default {
 .playList {
 
     .bg-content {
-
-        .bg-mask {
-
-            .list-cover{
-                background-color: red;
-                width: 100px;
-                height:100px;
-                margin-top: 12px;
-                margin-left: 12px;
-                img{
-                  max-width:145px;
-                  max-height:145px;
-                }
-                span.list-name{
-
-                }
-                span.list-owner{
-
-                  .owner-pic{
+        .playlist-info{
+              position: relative;
+              .info-gallery{
+                    position: relative;
+                    float: left;
+                    width: 30%;
+                    overflow: hidden;
+                    span{
+                      position: absolute;
+                      display: block;
+                      padding-right: 5px;
+                      width: 100%;
+                      left: 0;
+                      top: 0;
+                      font-size: 12px;
+                      text-align: right;
+                      background: rgba(0,0,0,.35);
+                      z-index: 11;
+                    }
+                    img{
+                      max-width: 100%;
+                      height: auto;
+                    }
+              }
+              .info-title{
+                  padding-left: 10px;
+                  width:70%;
+                  .title{
 
                   }
-                }
-            }
+                  .author{
+                    .mu-avatar{
+                          width: 30px;
+                          height: 30px;
+                              color: #fff;
+                              background-color: #bdbdbd;
+                      .mu-avatar-inner{
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            width: 100%;
+                            -webkit-box-align: center;
+                            -ms-flex-align: center;
+                            align-items: center;
+                            img{
+                                  border-radius: 50%;
+                                  width: 100%;
+                                  height: 100%;
+                                  display: block;
+                            }
+                      }
+                    }
+                  }
+              }
         }
+        
     }
 }
 </style>
